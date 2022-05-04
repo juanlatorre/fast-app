@@ -1,8 +1,7 @@
 import chalk from "chalk";
-import { downloadAndExtractRepo } from "./utils";
 import fs from "fs";
 import inquirer from "inquirer";
-import retry from "async-retry";
+import { install } from "./utils";
 import validatePkg from "validate-npm-package-name";
 
 interface FirstSet {
@@ -104,12 +103,10 @@ export const app = async () => {
               },
               {
                 name: "Remix (recommended)",
-                disabled: "Not yet supported",
                 value: "remix",
               },
               {
                 name: "Create React App",
-                disabled: "Not yet supported",
                 value: "cra",
               },
             ],
@@ -121,20 +118,17 @@ export const app = async () => {
         fs.mkdirSync(firstSet.package_name);
 
         if (react_framework === "next.js" && use_ts) {
-          // Download Next.js + Typescript
-          await retry(() => downloadAndExtractRepo(firstSet.package_name), {
-            retries: 3,
-          });
+          await install(firstSet.package_name, "next-ts");
         } else if (react_framework === "next.js" && !use_ts) {
-          // Download Next.js Vanilla JS
+          await install(firstSet.package_name, "next");
         } else if (react_framework === "remix" && use_ts) {
-          // Download Remix + TypeScript
+          await install(firstSet.package_name, "remix-ts");
         } else if (react_framework === "remix" && !use_ts) {
-          // Download Remix Vanilla JS
+          await install(firstSet.package_name, "remix");
         } else if (react_framework === "cra" && use_ts) {
-          // Download Create React App + TypeScript
+          await install(firstSet.package_name, "cra-ts");
         } else if (react_framework === "cra" && !use_ts) {
-          // Download Create React App Vanilla JS
+          await install(firstSet.package_name, "cra");
         }
       } catch (err) {
         console.error(err);
