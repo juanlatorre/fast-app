@@ -1,6 +1,6 @@
 {
   "name": "create-tactech-app",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A cli app to create a new Tactech project.",
   "main": "./lib/src/bin.js",
   "exports": {
@@ -37,10 +37,10 @@
     "@types/fs-extra": "^9.0.13",
     "@types/inquirer": "^8.2.1",
     "@types/needle": "^2.5.3",
-    "@types/node": "^17.0.30",
+    "@types/node": "^17.0.31",
     "@types/validate-npm-package-name": "^3.0.3",
-    "@typescript-eslint/eslint-plugin": "^5.21.0",
-    "@typescript-eslint/parser": "^5.21.0",
+    "@typescript-eslint/eslint-plugin": "^5.22.0",
+    "@typescript-eslint/parser": "^5.22.0",
     "bob-ts": "^3.1.2",
     "esbuild": "^0.14.38",
     "eslint": "^8.14.0",
