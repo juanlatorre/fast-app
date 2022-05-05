@@ -1,7 +1,7 @@
-<h1 align="center">Welcome to create-tactech-app 👋</h1>
+<h1 align="center">Welcome to fast-app 👋</h1>
 <p>
-  <a href="https://www.npmjs.com/package/create-tactech-app" target="_blank">
-    <img alt="Version" src="https://img.shields.io/npm/v/create-tactech-app.svg">
+  <a href="https://www.npmjs.com/package/fast-app" target="_blank">
+    <img alt="Version" src="https://img.shields.io/npm/v/fast-app.svg">
   </a>
   <a href="#" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
@@ -11,26 +11,26 @@
   </a>
 </p>
 
-> A cli app to create a new Tactech project.
+> A cli app to create a new project with a lot of templates.
 
-### 🏠 [Homepage](https://github.com/juanlatorre/create-tactech-app)
+### 🏠 [Homepage](https://github.com/juanlatorre/fast-app)
 
 ## Install
 
 ```sh
-npm install -g create-tactech-app
+npm install -g fast-app
 ```
 
 ## Usage
 
 ```sh
-npx create-tactech-app
+npx fast-app
 ```
 
 or
 
 ```sh
-create-tactech-app
+fast-app
 ```
 
 ## Author
@@ -43,7 +43,7 @@ create-tactech-app
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/juanlatorre/create-tactech-app/issues).
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/juanlatorre/fast-app/issues).
 
 ## Show your support
 

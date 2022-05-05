@@ -47,7 +47,7 @@ export const app = async () => {
     console.log(
       chalk.yellow(
         boxen(
-          `The latest version is ${update.latest}. Please run\n$ npm install -g create-tactech-app@latest`,
+          `The latest version is ${update.latest}. Please run\n$ npm install -g fast-app@latest`,
           {
             padding: 1,
             textAlignment: "center",
@@ -171,7 +171,7 @@ export const app = async () => {
     boxen(
       `${chalk.magenta(
         firstSet.package_name,
-      )} was successfully generated.\nThanks for using create-tactech-app`,
+      )} was successfully generated.\nThanks for using fast-app`,
       { padding: 1 },
     ),
   );

@@ -1,16 +1,16 @@
 {
-  "name": "create-tactech-app",
+  "name": "fast-app",
   "version": "0.1.0",
-  "description": "A cli app to create a new Tactech project.",
+  "description": "A cli app to create a new project with a lot of templates",
   "type": "module",
   "main": "./lib/src/bin.js",
   "types": "./lib/src/bin.d.ts",
   "outline.exports": "named",
   "bin": {
-    "create-tactech-app": "./bin/create-tactech-app.mjs"
+    "fast-app": "./bin/fast-app.mjs"
   },
   "scripts": {
-    "start": "npm run build && node ./bin/create-tactech-app.mjs",
+    "start": "npm run build && node ./bin/fast-app.mjs",
     "build": "npm run clean:some && bob-ts -i src -d lib && tsc",
     "prepare": "husky install && npm run build",
     "clean:some": "npx rimraf ./lib",
@@ -20,14 +20,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:juanlatorre/create-tactech-app.git"
+    "url": "git@github.com:juanlatorre/fast-app.git"
   },
   "author": "Juan Latorre",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/juanlatorre/create-tactech-app/issues"
+    "url": "https://github.com/juanlatorre/fast-app/issues"
   },
-  "homepage": "https://github.com/juanlatorre/create-tactech-app",
+  "homepage": "https://github.com/juanlatorre/fast-app",
   "devDependencies": {
     "@types/async-retry": "^1.4.4",
     "@types/fs-extra": "^9.0.13",

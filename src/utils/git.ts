@@ -23,12 +23,9 @@ export function tryGitInit(name: string): boolean {
     execSync(`cd ${name} && git checkout -b main`, { stdio: "ignore" });
 
     execSync(`cd ${name} && git add -A`, { stdio: "ignore" });
-    execSync(
-      `cd ${name} && git commit -m "Initial commit from Create Tactech App"`,
-      {
-        stdio: "ignore",
-      },
-    );
+    execSync(`cd ${name} && git commit -m "Initial commit from Fast App"`, {
+      stdio: "ignore",
+    });
     return true;
   } catch (e) {
     return false;
