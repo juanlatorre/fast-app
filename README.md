@@ -1,13 +1,13 @@
-<h1 align="center">Welcome to fast-app 👋</h1>
+<h1 align="center">Welcome to create-fast-app 👋</h1>
 <p>
-  <a href="https://www.npmjs.com/package/fast-app" target="_blank">
-    <img alt="Version" src="https://img.shields.io/npm/v/fast-app.svg">
+  <a href="https://www.npmjs.com/package/create-fast-app" target="_blank">
+    <img alt="Version" src="https://img.shields.io/npm/v/create-fast-app.svg">
   </a>
   <a href="#" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
-  <a href="https://twitter.com/unnamed\_query" target="_blank">
-    <img alt="Twitter: unnamed\_query" src="https://img.shields.io/twitter/follow/unnamed_query.svg?style=social" />
+  <a href="https://twitter.com/unnamed_query" target="_blank">
+    <img alt="Twitter: unnamed_query" src="https://img.shields.io/twitter/follow/unnamed_query.svg?style=social" />
   </a>
 </p>
 
@@ -18,19 +18,19 @@
 ## Install
 
 ```sh
-npm install -g fast-app
+npm install -g create-fast-app
 ```
 
 ## Usage
 
 ```sh
-npx fast-app
+npx create-fast-app
 ```
 
 or
 
 ```sh
-fast-app
+create-fast-app
 ```
 
 ## Author
