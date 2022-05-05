@@ -12,6 +12,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 16
+      - run: npm install
       - run: npm run build
 
   publish-npm:
@@ -36,7 +37,7 @@ jobs:
         with:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
-          scope: '@juanlatorre'
+          scope: "@juanlatorre"
       - run: echo registry=https://npm.pkg.github.com/juanlatorre >> .npmrc
       - run: npm publish
         env:
