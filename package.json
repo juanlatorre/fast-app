@@ -16,7 +16,7 @@
     "clean:some": "npx rimraf ./lib",
     "clean:all": "npx rimraf ./node_modules ./package-lock.json ./lib",
     "refresh": "npm run clean:all && npm install",
-    "publish-npm": "npm run build && npm publish"
+    "publish-npm": "npm run build && npm publish --access public"
   },
   "repository": {
     "type": "git",
