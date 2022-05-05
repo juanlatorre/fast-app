@@ -145,4 +145,7 @@ export const app = async () => {
     // React Native CLI
     // React Native Expo
   }
+
+  console.log(`${chalk.green("Success!")} Created ${firstSet.package_name}.`);
+  console.log();
 };
