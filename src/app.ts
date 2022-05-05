@@ -1,5 +1,8 @@
+import * as pack from "../package.json";
+
 import boxen from "boxen";
 import chalk from "chalk";
+import checkForUpdate from "update-check";
 import fs from "fs";
 import inquirer from "inquirer";
 import { install } from "./utils";
@@ -38,6 +41,22 @@ const validate = (text: string) => {
 };
 
 export const app = async () => {
+  const update = await checkForUpdate(pack);
+
+  if (update) {
+    console.log(
+      chalk.yellow(
+        boxen(
+          `The latest version is ${update.latest}. Please run\n$ npm install -g create-tactech-app@latest`,
+          {
+            padding: 1,
+            textAlignment: "center",
+          },
+        ),
+      ),
+    );
+  }
+
   const firstSet: FirstSet = await inquirer.prompt([
     {
       type: "input",

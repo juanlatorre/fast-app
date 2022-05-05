@@ -1,22 +1,17 @@
 {
   "name": "create-tactech-app",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "description": "A cli app to create a new Tactech project.",
+  "type": "module",
   "main": "./lib/src/bin.js",
   "types": "./lib/src/bin.d.ts",
-  "exports": {
-    ".": {
-      "import": "./lib/src/bin.mjs",
-      "require": "./lib/src/bin.js"
-    },
-    "./package.json": "./package.json"
-  },
+  "outline.exports": "named",
   "bin": {
     "create-tactech-app": "./bin/create-tactech-app.mjs"
   },
   "scripts": {
     "start": "npm run build && node ./bin/create-tactech-app.mjs",
-    "build": "npm run clean:some && bob-ts -i src -f interop -d lib && tsc",
+    "build": "npm run clean:some && bob-ts -i src -d lib && tsc",
     "prepare": "husky install && npm run build",
     "clean:some": "npx rimraf ./lib",
     "clean:all": "npx rimraf ./node_modules ./package-lock.json ./lib",
@@ -59,6 +54,7 @@
     "inquirer": "^8.2.4",
     "needle": "^3.1.0",
     "node-stream-zip": "^1.15.0",
+    "update-check": "^1.5.4",
     "validate-npm-package-name": "^4.0.0"
   }
 }

@@ -1,3 +1,3 @@
 #! /usr/bin/env node
 
-import "../lib/src/bin.mjs";
+import "../lib/src/bin.js";
