@@ -1,6 +1,6 @@
 {
   "name": "create-tactech-app",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A cli app to create a new Tactech project.",
   "main": "./lib/src/bin.js",
   "types": "./lib/src/bin.d.ts",
@@ -52,6 +52,7 @@
   },
   "dependencies": {
     "async-retry": "^1.3.3",
+    "boxen": "^6.2.1",
     "chalk": "^5.0.1",
     "commander": "^9.2.0",
     "fs-extra": "^10.1.0",

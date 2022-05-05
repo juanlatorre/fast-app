@@ -1,4 +1,3 @@
-import chalk from "chalk";
 import { downloadAndExtractRepo } from "./downloadAndExtract";
 import retry from "async-retry";
 import { tryGitInit } from "./git";
@@ -9,8 +8,4 @@ export async function install(name: string, template: string) {
   });
 
   tryGitInit(name);
-
-  console.log(
-    chalk.greenBright(`Project ${chalk.magenta(name)} created succesfully.`),
-  );
 }

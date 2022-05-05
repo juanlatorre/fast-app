@@ -1,3 +1,4 @@
+import boxen from "boxen";
 import chalk from "chalk";
 import fs from "fs";
 import inquirer from "inquirer";
@@ -88,11 +89,6 @@ export const app = async () => {
       const { use_ts, react_framework }: ReactFrameworks =
         await inquirer.prompt([
           {
-            type: "confirm",
-            name: "use_ts",
-            message: "Do you want to use TypeScript?:",
-          },
-          {
             type: "list",
             name: "react_framework",
             message: "Choose a react framework:",
@@ -111,6 +107,11 @@ export const app = async () => {
               },
             ],
             filter,
+          },
+          {
+            type: "confirm",
+            name: "use_ts",
+            message: "Do you want to use TypeScript?:",
           },
         ]);
 
@@ -146,5 +147,14 @@ export const app = async () => {
     // React Native Expo
   }
 
+  console.log();
+  console.log(
+    boxen(
+      `${chalk.magenta(
+        firstSet.package_name,
+      )} was successfully generated.\nThanks for using create-tactech-app`,
+      { padding: 1 },
+    ),
+  );
   console.log();
 };
