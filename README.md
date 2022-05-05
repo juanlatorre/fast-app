@@ -18,13 +18,19 @@
 ## Install
 
 ```sh
-npm install
+npm install -g create-tactech-app
 ```
 
 ## Usage
 
 ```sh
-npm start
+npx create-tactech-app
+```
+
+or
+
+```sh
+create-tactech-app
 ```
 
 ## Author
