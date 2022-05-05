@@ -1,6 +1,6 @@
 {
   "name": "create-tactech-app",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A cli app to create a new Tactech project.",
   "main": "./lib/src/bin.js",
   "exports": {
@@ -24,14 +24,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/jlatorreh/create-tactech-app.git"
+    "url": "git@github.com:juanlatorre/create-tactech-app.git"
   },
   "author": "Juan Latorre",
   "license": "MIT",
   "bugs": {
-    "url": "https://bitbucket.org/jlatorreh/create-tactech-app/issues"
+    "url": "https://github.com/juanlatorre/create-tactech-app/issues"
   },
-  "homepage": "https://bitbucket.org/jlatorreh/create-tactech-app#readme",
+  "homepage": "https://github.com/juanlatorre/create-tactech-app",
   "devDependencies": {
     "@types/async-retry": "^1.4.4",
     "@types/fs-extra": "^9.0.13",
