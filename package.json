@@ -1,5 +1,5 @@
 {
-  "name": "create-tactech-app",
+  "name": "@juanlatorre/create-tactech-app",
   "version": "0.0.7",
   "description": "A cli app to create a new Tactech project.",
   "main": "./lib/src/bin.js",
