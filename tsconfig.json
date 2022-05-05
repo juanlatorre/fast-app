@@ -2,8 +2,9 @@
   "compilerOptions": {
     "target": "es2020",
     "module": "es2022",
-    "noEmit": true,
     "strict": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
