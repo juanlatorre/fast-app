@@ -5,18 +5,7 @@ on:
     types: [created]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 16
-      - run: npm install
-      - run: npm run build
-
   publish-npm:
-    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -24,12 +13,12 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-      - run: npm publish --access public
+      - run: npm install
+      - run: npm run publish-npm
         env:
           NODE_AUTH_TOKEN: ${{secrets.PUBLISH_NPM_TOKEN}}
 
   publish-gpr:
-    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -39,6 +28,7 @@ jobs:
           registry-url: https://npm.pkg.github.com/
           scope: "@juanlatorre"
       - run: echo registry=https://npm.pkg.github.com/juanlatorre >> .npmrc
-      - run: npm publish
+      - run: npm install
+      - run: npm run publish-npm
         env:
           NODE_AUTH_TOKEN: ${{secrets.PUBLISH_GITHUB_TOKEN}}
