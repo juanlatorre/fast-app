@@ -1,5 +1,5 @@
 {
-  "name": "fast-app",
+  "name": "@juanlatorre/fast-app",
   "version": "0.1.0",
   "description": "A cli app to create a new project with a lot of templates",
   "type": "module",
