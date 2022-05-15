@@ -13,13 +13,21 @@ interface FirstSet {
   area: "frontend" | "backend" | "mobile";
 }
 
+interface TS {
+  use_ts: boolean;
+}
+
 interface FrontendFrameworks {
   frontend_framework: "react" | "vue.js" | "angular";
 }
 
-interface ReactFrameworks {
+interface ReactFrameworks extends TS {
   react_framework: "next.js" | "remix" | "cra";
-  use_ts: boolean;
+}
+
+interface SecondSet {
+  language: "node.js" | "golang";
+  transport: "graphql" | "rest" | "grpc";
 }
 
 const filter = (val: string) => {
@@ -71,7 +79,7 @@ export const app = async () => {
       message: "Choose an area:",
       choices: [
         "Frontend",
-        { name: "Backend", disabled: "Not supported yet" },
+        "Backend",
         { name: "Mobile", disabled: "Not supported yet" },
       ],
       filter,
@@ -155,15 +163,70 @@ export const app = async () => {
       }
     }
   } else if (firstSet.area === "backend") {
-    // Pregunto, elige una api
-    // GraphQL (Recommended)
-    // REST (Recommended)
-    // gRPC
+    const { language, transport }: SecondSet = await inquirer.prompt([
+      {
+        type: "list",
+        name: "language",
+        message: "Choose a language:",
+        choices: [
+          {
+            name: "Node.js (recommended)",
+            value: "node.js",
+          },
+          {
+            name: "Golang",
+            value: "golang",
+            disabled: "Not yet supported",
+          },
+        ],
+        filter,
+      },
+      {
+        type: "list",
+        name: "transport",
+        message: "Choose a HTTP Transport:",
+        choices: [
+          {
+            name: "GraphQL",
+            value: "graphql",
+          },
+          {
+            name: "REST",
+            value: "rest",
+            disabled: "Not yet supported",
+          },
+          {
+            name: "gRPC",
+            value: "grpc",
+            disabled: "Not yet supported",
+          },
+        ],
+        filter,
+      },
+    ]);
+
+    if (language === "node.js") {
+      if (transport === "graphql") {
+        await install(firstSet.package_name, "node-graphql-ts");
+      } else if (transport === "rest") {
+        await install(firstSet.package_name, "node-rest-ts");
+      } else if (transport === "grpc") {
+        await install(firstSet.package_name, "node-grpc-ts");
+      }
+    } else if (language === "golang") {
+      if (transport === "graphql") {
+        // not yet supported
+      } else if (transport === "rest") {
+        // not yet supported
+      } else if (transport === "grpc") {
+        // not yet supported
+      }
+    }
   } else if (firstSet.area === "mobile") {
     // Pregunto, choose a framework
     // Flutter (Recommended)
-    // React Native CLI
-    // React Native Expo
+    // React Native
+    // Expo or CLI ?
   }
 
   console.log();

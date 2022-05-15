@@ -1,0 +1,63 @@
+{
+  "name": "node-graphql-ts",
+  "version": "1.0.0",
+  "description": "Node.js (Fastify) + GraphQL EZ + Typescript backend application",
+  "license": "MIT",
+  "type": "module",
+  "main": "src/server.ts",
+  "types": "src/server.ts",
+  "scripts": {
+    "check:format": "prettier --check \"**/*.{ts,gql,json,yml,yaml}\"",
+    "clean:install": "npx rimraf \"**/{node_modules}\" package-lock.json && npm i && npm run generate",
+    "dev:script": "cross-env NODE_ENV=development bob-watch -w src -c \"bob-tsm src/server.ts\"",
+    "dev": "concurrently -r npm:dev:script npm:tsc:watch",
+    "generate": "prisma generate",
+    "lint": "eslint . --ext .ts",
+    "predev": "npm run generate",
+    "prepare": "husky install",
+    "pretty:all": "prettier --write \"**/*.{ts,gql,json,yml,yaml}\"",
+    "start": "cross-env NODE_ENV=production bob-tsm src/server.ts",
+    "tsc:watch": "tsc --watch",
+    "tsc": "tsc"
+  },
+  "dependencies": {
+    "@fastify/cors": "^7.0.0",
+    "@graphql-ez/fastify": "^0.9.7",
+    "@graphql-ez/plugin-altair": "^0.9.9",
+    "@graphql-ez/plugin-codegen": "^0.7.9",
+    "@graphql-ez/plugin-dataloader": "^0.6.0",
+    "@graphql-ez/plugin-modules": "^0.11.0",
+    "@graphql-ez/plugin-scalars": "^0.7.4",
+    "@graphql-ez/plugin-voyager": "^0.9.3",
+    "@prisma/client": "^3.14.0",
+    "dotenv": "^16.0.1",
+    "fastify": "^3.29.0",
+    "graphql": "^16.5.0",
+    "graphql-ez": "^0.14.1",
+    "pino": "^7.11.0",
+    "pino-pretty": "^7.6.1",
+    "prisma": "^3.14.0",
+    "require-env-variable": "^4.0.1",
+    "validator": "^13.7.0"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.33",
+    "@types/validator": "^13.7.2",
+    "@typescript-eslint/eslint-plugin": "^5.23.0",
+    "@typescript-eslint/parser": "^5.23.0",
+    "bob-tsm": "^0.4.8",
+    "bob-watch": "^0.1.1",
+    "concurrently": "^7.1.0",
+    "cross-env": "^7.0.3",
+    "esbuild": "0.14.39",
+    "eslint": "^8.15.0",
+    "eslint-config-prettier": "^8.5.0",
+    "husky": "^8.0.1",
+    "pino-pretty": "^7.6.1",
+    "prettier": "^2.6.2",
+    "typescript": "^4.6.4"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
