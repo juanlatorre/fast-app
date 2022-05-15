@@ -1,6 +1,6 @@
 {
   "name": "create-fast-app",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A cli app to create a new project with a lot of templates",
   "type": "module",
   "main": "./lib/src/bin.js",
@@ -33,7 +33,7 @@
     "@types/fs-extra": "^9.0.13",
     "@types/inquirer": "^8.2.1",
     "@types/needle": "^2.5.3",
-    "@types/node": "^17.0.31",
+    "@types/node": "^17.0.33",
     "@types/validate-npm-package-name": "^3.0.3",
     "@typescript-eslint/eslint-plugin": "^5.23.0",
     "@typescript-eslint/parser": "^5.23.0",
