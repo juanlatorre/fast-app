@@ -1,6 +1,6 @@
 {
   "name": "create-fast-app",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "A cli app to create a new project with a lot of templates",
   "type": "module",
   "main": "./lib/src/bin.js",

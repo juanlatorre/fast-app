@@ -13,7 +13,35 @@
 
 > A cli app to create a new project with a lot of templates.
 
-### 🏠 [Homepage](https://github.com/juanlatorre/fast-app)
+## Templates
+
+> All Node.js templates include a TypeScript version.
+
+> All Node.js Backend templates include Prisma as the ORM.
+
+```bash
+├── Frontend
+│   ├── React
+│   │   ├── Next.js
+│   │   ├── Remix
+│   │   ├── Create React App
+│   ├── Vue.js (Not yet supported)
+│   └── Angular (Not yet supported)
+├── Backend
+│   ├── Node.js
+│   │   ├── GraphQL
+│   │   ├── REST (Coming soon)
+│   │   ├── gRPC (Coming soon)
+│   └── Golang (Not yet supported)
+│   │   ├── GraphQL
+│   │   ├── REST
+│   │   ├── gRPC
+├── Mobile (Not yet supported)
+│   ├── React Native
+│   │   ├── Expo
+│   │   ├── CLI
+│   └── Flutter
+```
 
 ## Install
 
