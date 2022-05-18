@@ -11,10 +11,9 @@ dotenv.config({
 
 const { DISABLE_INTROSPECTION } = requireEnv("DISABLE_INTROSPECTION");
 
-export const { PORT = 3010, HOST = "http://localhost" } = requireEnv(
-  "PORT",
-  "HOST",
-);
+export const { HOST = "http://localhost" } = requireEnv("HOST");
+const { PORT: port } = requireEnv("PORT");
+export const PORT = parseInt(port, 10) || 3000;
 
 const NODE_ENV = process.env.NODE_ENV;
 
@@ -39,6 +38,7 @@ export const logger = pino({
 });
 
 export const API_URL = `${HOST}:${PORT}/graphql`;
+export const VOYAGER_URL = `${HOST}:${PORT}/voyager`;
 
 export const ENV = {
   IS_DEVELOPMENT,
@@ -50,4 +50,5 @@ console.log({
   NODE_ENV,
   ENV,
   API_URL,
+  VOYAGER_URL,
 });

@@ -1,36 +1,67 @@
-console.time("Startup time");
-
 import { ENV, HOST, PORT, logger } from "./env";
+import fastify, { FastifyReply, FastifyRequest } from "fastify";
 
-import Fastify from "fastify";
-import { buildApp } from "./ez/app";
-import fastifyCors from "@fastify/cors";
-import { validateSchema } from "graphql";
+import GraphQLVoyagerFastify from "graphql-voyager-fastify-plugin";
+import context from "./context";
+import { createServer } from "@graphql-yoga/node";
+import { schema } from "./modules";
+import { useDisableIntrospection } from "@envelop/disable-introspection";
 
-export const EZApp = buildApp();
+const app = fastify({ logger });
 
-EZApp.getEnveloped.then((getEnveloped) => {
-  const errors = validateSchema(getEnveloped().schema);
-
-  if (errors.length > 1) {
-    errors.forEach(console.error);
-    process.exit(1);
-  }
+const graphQLServer = createServer<{
+  req: FastifyRequest;
+  reply: FastifyReply;
+}>({
+  graphiql: true,
+  cors: {
+    ...(ENV.IS_DEVELOPMENT && { origin: "*" }),
+  },
+  context,
+  logging: app.log,
+  plugins: [
+    useDisableIntrospection({
+      disableIf: () => ENV.DISABLE_INTROSPECTION !== "false",
+    }),
+  ],
+  maskedErrors: {
+    handleParseErrors: true,
+    handleValidationErrors: true,
+  },
+  schema,
 });
 
-export const app = Fastify({
-  logger,
-  pluginTimeout: 1000 * 10,
+app.route({
+  url: "/graphql",
+  method: ["GET", "POST", "OPTIONS"],
+  handler: async (req, reply) => {
+    const response = await graphQLServer.handleIncomingMessage(req, {
+      req,
+      reply,
+    });
+    for (const [name, value] of response.headers) {
+      reply.header(name, value);
+    }
+
+    reply.status(response.status);
+    reply.send(response.body);
+  },
 });
 
-app.register(EZApp.fastifyPlugin);
-
-ENV.IS_DEVELOPMENT &&
-  app.register(fastifyCors, {
-    origin: "*",
+ENV.DISABLE_INTROSPECTION === "false" &&
+  app.register(GraphQLVoyagerFastify, {
+    path: "/voyager",
+    displayOptions: {
+      rootType: undefined,
+      skipRelay: false,
+      skipDeprecated: true,
+      sortByAlphabet: true,
+      showLeafFields: true,
+      hideRoot: false,
+    },
   });
 
-app.listen(PORT, HOST).then((address) => {
-  console.log(`Listening on ${address.replace("0.0.0.0", "localhost")}`);
-  console.timeEnd("Startup time");
+app.listen({ port: PORT, host: HOST }).catch((err) => {
+  app.log.error(err);
+  process.exit(1);
 });

@@ -12,7 +12,7 @@ function isInGitRepository(name: string): boolean {
 
 export function tryGitInit(name: string): boolean {
   try {
-    execSync("git --version", { stdio: "ignore" });
+    execSync(`git --version`, { stdio: "ignore" });
 
     if (isInGitRepository(name)) {
       return false;

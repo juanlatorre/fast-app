@@ -206,12 +206,20 @@ export const app = async () => {
     ]);
 
     if (language === "node.js") {
-      if (transport === "graphql") {
-        await install(firstSet.package_name, "node-graphql-ts");
-      } else if (transport === "rest") {
-        await install(firstSet.package_name, "node-rest-ts");
-      } else if (transport === "grpc") {
-        await install(firstSet.package_name, "node-grpc-ts");
+      try {
+        fs.mkdirSync(firstSet.package_name);
+
+        if (transport === "graphql") {
+          await install(firstSet.package_name, "node-graphql-ts");
+        } else if (transport === "rest") {
+          // not yet supported
+          // await install(firstSet.package_name, "node-rest-ts");
+        } else if (transport === "grpc") {
+          // not yet supported
+          // await install(firstSet.package_name, "node-grpc-ts");
+        }
+      } catch (err) {
+        console.error(err);
       }
     } else if (language === "golang") {
       if (transport === "graphql") {

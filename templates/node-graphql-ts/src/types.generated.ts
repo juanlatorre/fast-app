@@ -1,9 +1,9 @@
-import type {
+import {
   GraphQLResolveInfo,
   GraphQLScalarType,
   GraphQLScalarTypeConfig,
 } from "graphql";
-import type { EZContext } from "graphql-ez";
+import { GraphQLContext } from "./context";
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = {
@@ -15,14 +15,6 @@ export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
   [SubKey in K]: Maybe<T[SubKey]>;
 };
-export type ResolverFn<TResult, TParent, TContext, TArgs> = (
-  parent: TParent,
-  args: TArgs,
-  context: TContext,
-  info: GraphQLResolveInfo,
-) =>
-  | Promise<import("graphql-ez").DeepPartial<TResult>>
-  | import("graphql-ez").DeepPartial<TResult>;
 export type RequireFields<T, K extends keyof T> = Omit<T, K> & {
   [P in K]-?: NonNullable<T[P]>;
 };
@@ -33,21 +25,37 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
-  DateTime: string | Date;
-  /** The `JSONObject` scalar type represents JSON objects as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf). */
-  JSONObject: any;
-  /** A field whose value conforms to the standard internet email address format as specified in RFC822: https://www.w3.org/Protocols/rfc822/. */
+  DateTime: Date | string;
   EmailAddress: string;
-  /** Represents NULL values */
-  Void: unknown;
-  /** HTTPS URL */
-  URL: string;
+};
+
+export type CreateUserInput = {
+  email: Scalars["EmailAddress"];
+  lastName: Scalars["String"];
+  name: Scalars["String"];
+};
+
+export type Mutation = {
+  __typename?: "Mutation";
+  createUser: User;
+  deleteUser?: Maybe<User>;
+  updateUser: User;
+};
+
+export type MutationCreateUserArgs = {
+  input: CreateUserInput;
+};
+
+export type MutationDeleteUserArgs = {
+  id: Scalars["ID"];
+};
+
+export type MutationUpdateUserArgs = {
+  input: UpdateUserInput;
 };
 
 export type Query = {
   __typename?: "Query";
-  ping: Scalars["String"];
   user: User;
   users: Array<User>;
 };
@@ -56,48 +64,22 @@ export type QueryUserArgs = {
   id: Scalars["ID"];
 };
 
-export type Mutation = {
-  __typename?: "Mutation";
-  ping: Scalars["String"];
-  createUser: User;
-  updateUser: User;
-  deleteUser?: Maybe<User>;
-};
-
-export type MutationCreateUserArgs = {
-  input: CreateUserInput;
-};
-
-export type MutationUpdateUserArgs = {
-  input: UpdateUserInput;
-};
-
-export type MutationDeleteUserArgs = {
+export type UpdateUserInput = {
+  email?: InputMaybe<Scalars["EmailAddress"]>;
   id: Scalars["ID"];
+  lastName?: InputMaybe<Scalars["String"]>;
+  name?: InputMaybe<Scalars["String"]>;
 };
 
 export type User = {
   __typename?: "User";
-  id: Scalars["ID"];
-  name: Scalars["String"];
-  lastName: Scalars["String"];
-  email: Scalars["String"];
   createdAt: Scalars["DateTime"];
-  updatedAt?: Maybe<Scalars["DateTime"]>;
   deletedAt?: Maybe<Scalars["DateTime"]>;
-};
-
-export type CreateUserInput = {
-  name: Scalars["String"];
-  lastName: Scalars["String"];
-  email: Scalars["String"];
-};
-
-export type UpdateUserInput = {
+  email: Scalars["EmailAddress"];
   id: Scalars["ID"];
-  name?: InputMaybe<Scalars["String"]>;
-  lastName?: InputMaybe<Scalars["String"]>;
-  email?: InputMaybe<Scalars["String"]>;
+  lastName: Scalars["String"];
+  name: Scalars["String"];
+  updatedAt?: Maybe<Scalars["DateTime"]>;
 };
 
 export type ResolverTypeWrapper<T> = Promise<T> | T;
@@ -108,6 +90,13 @@ export type ResolverWithResolve<TResult, TParent, TContext, TArgs> = {
 export type Resolver<TResult, TParent = {}, TContext = {}, TArgs = {}> =
   | ResolverFn<TResult, TParent, TContext, TArgs>
   | ResolverWithResolve<TResult, TParent, TContext, TArgs>;
+
+export type ResolverFn<TResult, TParent, TContext, TArgs> = (
+  parent: TParent,
+  args: TArgs,
+  context: TContext,
+  info: GraphQLResolveInfo,
+) => Promise<TResult> | TResult;
 
 export type SubscriptionSubscribeFn<TResult, TParent, TContext, TArgs> = (
   parent: TParent,
@@ -200,36 +189,30 @@ export type DirectiveResolverFn<
 
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
+  Boolean: ResolverTypeWrapper<Scalars["Boolean"]>;
+  CreateUserInput: CreateUserInput;
   DateTime: ResolverTypeWrapper<Scalars["DateTime"]>;
-  JSONObject: ResolverTypeWrapper<Scalars["JSONObject"]>;
   EmailAddress: ResolverTypeWrapper<Scalars["EmailAddress"]>;
-  Void: ResolverTypeWrapper<Scalars["Void"]>;
-  URL: ResolverTypeWrapper<Scalars["URL"]>;
-  Query: ResolverTypeWrapper<{}>;
-  String: ResolverTypeWrapper<Scalars["String"]>;
   ID: ResolverTypeWrapper<Scalars["ID"]>;
   Mutation: ResolverTypeWrapper<{}>;
-  User: ResolverTypeWrapper<User>;
-  CreateUserInput: CreateUserInput;
+  Query: ResolverTypeWrapper<{}>;
+  String: ResolverTypeWrapper<Scalars["String"]>;
   UpdateUserInput: UpdateUserInput;
-  Boolean: ResolverTypeWrapper<Scalars["Boolean"]>;
+  User: ResolverTypeWrapper<User>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
+  Boolean: Scalars["Boolean"];
+  CreateUserInput: CreateUserInput;
   DateTime: Scalars["DateTime"];
-  JSONObject: Scalars["JSONObject"];
   EmailAddress: Scalars["EmailAddress"];
-  Void: Scalars["Void"];
-  URL: Scalars["URL"];
-  Query: {};
-  String: Scalars["String"];
   ID: Scalars["ID"];
   Mutation: {};
-  User: User;
-  CreateUserInput: CreateUserInput;
+  Query: {};
+  String: Scalars["String"];
   UpdateUserInput: UpdateUserInput;
-  Boolean: Scalars["Boolean"];
+  User: User;
 };
 
 export interface DateTimeScalarConfig
@@ -237,31 +220,39 @@ export interface DateTimeScalarConfig
   name: "DateTime";
 }
 
-export interface JsonObjectScalarConfig
-  extends GraphQLScalarTypeConfig<ResolversTypes["JSONObject"], any> {
-  name: "JSONObject";
-}
-
 export interface EmailAddressScalarConfig
   extends GraphQLScalarTypeConfig<ResolversTypes["EmailAddress"], any> {
   name: "EmailAddress";
 }
 
-export interface VoidScalarConfig
-  extends GraphQLScalarTypeConfig<ResolversTypes["Void"], any> {
-  name: "Void";
-}
-
-export interface UrlScalarConfig
-  extends GraphQLScalarTypeConfig<ResolversTypes["URL"], any> {
-  name: "URL";
-}
+export type MutationResolvers<
+  ContextType = GraphQLContext,
+  ParentType extends ResolversParentTypes["Mutation"] = ResolversParentTypes["Mutation"],
+> = {
+  createUser?: Resolver<
+    ResolversTypes["User"],
+    ParentType,
+    ContextType,
+    RequireFields<MutationCreateUserArgs, "input">
+  >;
+  deleteUser?: Resolver<
+    Maybe<ResolversTypes["User"]>,
+    ParentType,
+    ContextType,
+    RequireFields<MutationDeleteUserArgs, "id">
+  >;
+  updateUser?: Resolver<
+    ResolversTypes["User"],
+    ParentType,
+    ContextType,
+    RequireFields<MutationUpdateUserArgs, "input">
+  >;
+};
 
 export type QueryResolvers<
-  ContextType = EZContext,
+  ContextType = GraphQLContext,
   ParentType extends ResolversParentTypes["Query"] = ResolversParentTypes["Query"],
 > = {
-  ping?: Resolver<ResolversTypes["String"], ParentType, ContextType>;
   user?: Resolver<
     ResolversTypes["User"],
     ParentType,
@@ -271,46 +262,21 @@ export type QueryResolvers<
   users?: Resolver<Array<ResolversTypes["User"]>, ParentType, ContextType>;
 };
 
-export type MutationResolvers<
-  ContextType = EZContext,
-  ParentType extends ResolversParentTypes["Mutation"] = ResolversParentTypes["Mutation"],
-> = {
-  ping?: Resolver<ResolversTypes["String"], ParentType, ContextType>;
-  createUser?: Resolver<
-    ResolversTypes["User"],
-    ParentType,
-    ContextType,
-    RequireFields<MutationCreateUserArgs, "input">
-  >;
-  updateUser?: Resolver<
-    ResolversTypes["User"],
-    ParentType,
-    ContextType,
-    RequireFields<MutationUpdateUserArgs, "input">
-  >;
-  deleteUser?: Resolver<
-    Maybe<ResolversTypes["User"]>,
-    ParentType,
-    ContextType,
-    RequireFields<MutationDeleteUserArgs, "id">
-  >;
-};
-
 export type UserResolvers<
-  ContextType = EZContext,
+  ContextType = GraphQLContext,
   ParentType extends ResolversParentTypes["User"] = ResolversParentTypes["User"],
 > = {
-  id?: Resolver<ResolversTypes["ID"], ParentType, ContextType>;
-  name?: Resolver<ResolversTypes["String"], ParentType, ContextType>;
-  lastName?: Resolver<ResolversTypes["String"], ParentType, ContextType>;
-  email?: Resolver<ResolversTypes["String"], ParentType, ContextType>;
   createdAt?: Resolver<ResolversTypes["DateTime"], ParentType, ContextType>;
-  updatedAt?: Resolver<
+  deletedAt?: Resolver<
     Maybe<ResolversTypes["DateTime"]>,
     ParentType,
     ContextType
   >;
-  deletedAt?: Resolver<
+  email?: Resolver<ResolversTypes["EmailAddress"], ParentType, ContextType>;
+  id?: Resolver<ResolversTypes["ID"], ParentType, ContextType>;
+  lastName?: Resolver<ResolversTypes["String"], ParentType, ContextType>;
+  name?: Resolver<ResolversTypes["String"], ParentType, ContextType>;
+  updatedAt?: Resolver<
     Maybe<ResolversTypes["DateTime"]>,
     ParentType,
     ContextType
@@ -318,17 +284,10 @@ export type UserResolvers<
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
-export type Resolvers<ContextType = EZContext> = {
+export type Resolvers<ContextType = GraphQLContext> = {
   DateTime?: GraphQLScalarType;
-  JSONObject?: GraphQLScalarType;
   EmailAddress?: GraphQLScalarType;
-  Void?: GraphQLScalarType;
-  URL?: GraphQLScalarType;
-  Query?: QueryResolvers<ContextType>;
   Mutation?: MutationResolvers<ContextType>;
+  Query?: QueryResolvers<ContextType>;
   User?: UserResolvers<ContextType>;
 };
-
-declare module "graphql-ez" {
-  interface EZResolvers extends Resolvers<import("graphql-ez").EZContext> {}
-}
