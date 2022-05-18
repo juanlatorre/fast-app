@@ -1,6 +1,6 @@
 import { MutationResolvers } from "../../../types.generated";
 
-export const deleteUser: MutationResolvers["deleteUser"] = async (
+const deleteUser: MutationResolvers["deleteUser"] = async (
   _parent,
   { id },
   ctx,

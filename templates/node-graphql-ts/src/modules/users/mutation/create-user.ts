@@ -1,6 +1,6 @@
 import { MutationResolvers } from "../../../types.generated";
 
-export const createUser: MutationResolvers["createUser"] = async (
+const createUser: MutationResolvers["createUser"] = async (
   _parent,
   { input },
   ctx,

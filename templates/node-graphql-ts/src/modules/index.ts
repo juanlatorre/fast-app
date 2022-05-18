@@ -3,5 +3,5 @@ import { makeExecutableSchema } from "@graphql-tools/schema";
 
 export const schema = makeExecutableSchema({
   typeDefs: await loadFiles("./**/schema.graphql"),
-  resolvers: await loadFiles("./**/{mutation,query,definition}/index.ts"),
+  resolvers: await loadFiles("./**/{mutation,query,resolvers}/index.js"),
 });
