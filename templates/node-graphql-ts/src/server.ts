@@ -2,6 +2,7 @@ import { ENV, HOST, PORT, logger } from "./env";
 import fastify, { FastifyReply, FastifyRequest } from "fastify";
 
 import GraphQLVoyagerFastify from "graphql-voyager-fastify-plugin";
+import codegen from "./codegen";
 import context from "./context";
 import { createServer } from "@graphql-yoga/node";
 import { schema } from "./modules";
@@ -61,7 +62,12 @@ ENV.DISABLE_INTROSPECTION === "false" &&
     },
   });
 
-app.listen({ port: PORT, host: HOST }).catch((err) => {
-  app.log.error(err);
-  process.exit(1);
-});
+app
+  .listen({ port: PORT, host: HOST })
+  .then(() => {
+    ENV.IS_DEVELOPMENT && codegen();
+  })
+  .catch((err) => {
+    app.log.error(err);
+    process.exit(1);
+  });
