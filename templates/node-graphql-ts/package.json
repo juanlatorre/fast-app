@@ -47,7 +47,7 @@
     "@typescript-eslint/eslint-plugin": "^5.28.0",
     "@typescript-eslint/parser": "^5.28.0",
     "bob-ts": "^4.0.0",
-    "concurrently": "^7.2.1",
+    "concurrently": "^7.2.2",
     "cross-env": "^7.0.3",
     "esbuild": "0.14.43",
     "eslint": "^8.17.0",
