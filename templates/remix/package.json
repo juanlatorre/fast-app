@@ -11,7 +11,7 @@
     "start": "remix-serve build"
   },
   "dependencies": {
-    "@remix-run/node": "^1.5.1",
+    "@remix-run/node": "^1.6.0",
     "@remix-run/react": "^1.5.1",
     "@remix-run/serve": "^1.5.1",
     "husky": "^8.0.1",
