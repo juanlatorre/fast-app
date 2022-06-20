@@ -49,7 +49,7 @@
     "bob-ts": "^4.0.0",
     "concurrently": "^7.2.2",
     "cross-env": "^7.0.3",
-    "esbuild": "0.14.44",
+    "esbuild": "0.14.46",
     "eslint": "^8.17.0",
     "eslint-config-prettier": "^8.5.0",
     "husky": "^8.0.1",
