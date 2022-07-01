@@ -1,4 +1,4 @@
-import { ENV, HOST, PORT, logger } from "./env";
+import { ENV, HOST, PORT } from "./env";
 import fastify, { FastifyReply, FastifyRequest } from "fastify";
 
 import GraphQLVoyagerFastify from "graphql-voyager-fastify-plugin";
@@ -8,7 +8,7 @@ import { createServer } from "@graphql-yoga/node";
 import { schema } from "./modules";
 import { useDisableIntrospection } from "@envelop/disable-introspection";
 
-const app = fastify({ logger });
+const app = fastify();
 
 const graphQLServer = createServer<{
   req: FastifyRequest;
@@ -25,10 +25,7 @@ const graphQLServer = createServer<{
       disableIf: () => ENV.DISABLE_INTROSPECTION !== "false",
     }),
   ],
-  maskedErrors: {
-    handleParseErrors: true,
-    handleValidationErrors: true,
-  },
+  maskedErrors: false,
   schema,
 });
 

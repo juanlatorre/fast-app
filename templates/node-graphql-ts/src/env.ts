@@ -25,18 +25,6 @@ export const IS_CI = !!process.env.CI;
 
 export const IS_NOT_CI = !IS_CI;
 
-export const logger = pino({
-  level: IS_DEVELOPMENT ? "warn" : "info",
-  transport: {
-    target: "pino-pretty",
-    options: {
-      colorize: true,
-      levelFirst: true,
-      translateTime: true,
-    },
-  },
-});
-
 export const API_URL = `${HOST}:${PORT}/graphql`;
 export const VOYAGER_URL = `${HOST}:${PORT}/voyager`;
 
