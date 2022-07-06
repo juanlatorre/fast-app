@@ -46,6 +46,15 @@ app.route({
   },
 });
 
+app.route({
+  url: "/health",
+  method: ["GET"],
+  handler: async (_req, reply) => {
+    reply.status(200);
+    reply.send({ status: "available" });
+  },
+});
+
 ENV.DISABLE_INTROSPECTION === "false" &&
   app.register(GraphQLVoyagerFastify, {
     path: "/voyager",

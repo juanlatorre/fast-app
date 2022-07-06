@@ -2,7 +2,6 @@ import { dirname, resolve } from "path";
 
 import dotenv from "dotenv";
 import { fileURLToPath } from "url";
-import pino from "pino";
 import { requireEnv } from "require-env-variable";
 
 dotenv.config({
@@ -25,8 +24,9 @@ export const IS_CI = !!process.env.CI;
 
 export const IS_NOT_CI = !IS_CI;
 
-export const API_URL = `${HOST}:${PORT}/graphql`;
-export const VOYAGER_URL = `${HOST}:${PORT}/voyager`;
+export const API_URL = `http://${HOST}:${PORT}/graphql`;
+export const VOYAGER_URL = `http://${HOST}:${PORT}/voyager`;
+export const HEALTH_URL = `http://${HOST}:${PORT}/health`;
 
 export const ENV = {
   IS_DEVELOPMENT,
@@ -39,4 +39,5 @@ console.log({
   ENV,
   API_URL,
   VOYAGER_URL,
+  HEALTH_URL,
 });
