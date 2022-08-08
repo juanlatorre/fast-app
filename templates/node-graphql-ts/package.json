@@ -22,7 +22,7 @@
     "tsc": "tsc"
   },
   "dependencies": {
-    "@envelop/disable-introspection": "^3.4.0",
+    "@envelop/disable-introspection": "^3.4.2",
     "@graphql-tools/load-files": "^6.6.0",
     "@graphql-tools/schema": "^8.5.1",
     "@graphql-yoga/node": "^2.13.6",
