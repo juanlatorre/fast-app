@@ -24,7 +24,7 @@
   "dependencies": {
     "@envelop/disable-introspection": "^3.4.0",
     "@graphql-tools/load-files": "^6.6.0",
-    "@graphql-tools/schema": "^8.5.0",
+    "@graphql-tools/schema": "^8.5.1",
     "@graphql-yoga/node": "^2.13.6",
     "@prisma/client": "^4.0.0",
     "dotenv": "^16.0.1",
