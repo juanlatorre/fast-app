@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/juanlatorre/fast-app",
   "devDependencies": {
-    "@types/async-retry": "^1.4.4",
+    "@types/async-retry": "^1.4.5",
     "@types/fs-extra": "^9.0.13",
     "@types/inquirer": "^9.0.0",
     "@types/needle": "^2.5.3",
