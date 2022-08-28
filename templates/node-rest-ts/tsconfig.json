@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "incremental": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "noEmit": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "preserveWatchOutput": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "importsNotUsedAsValues": "remove"
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["**/node_modules", "dist"]
+}

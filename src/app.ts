@@ -77,11 +77,7 @@ export const app = async () => {
       type: "list",
       name: "area",
       message: "Choose an area:",
-      choices: [
-        "Frontend",
-        "Backend",
-        { name: "Mobile", disabled: "Not supported yet" },
-      ],
+      choices: ["Frontend", "Backend", { name: "Mobile", disabled: "Not supported yet" }],
       filter,
     },
   ]);
@@ -113,34 +109,33 @@ export const app = async () => {
     ]);
 
     if (frontend_framework === "react") {
-      const { use_ts, react_framework }: ReactFrameworks =
-        await inquirer.prompt([
-          {
-            type: "list",
-            name: "react_framework",
-            message: "Choose a react framework:",
-            choices: [
-              {
-                name: "Next.js (recommended)",
-                value: "next.js",
-              },
-              {
-                name: "Remix (recommended)",
-                value: "remix",
-              },
-              {
-                name: "Create React App",
-                value: "cra",
-              },
-            ],
-            filter,
-          },
-          {
-            type: "confirm",
-            name: "use_ts",
-            message: "Do you want to use TypeScript?:",
-          },
-        ]);
+      const { use_ts, react_framework }: ReactFrameworks = await inquirer.prompt([
+        {
+          type: "list",
+          name: "react_framework",
+          message: "Choose a react framework:",
+          choices: [
+            {
+              name: "Next.js (recommended)",
+              value: "next.js",
+            },
+            {
+              name: "Remix (recommended)",
+              value: "remix",
+            },
+            {
+              name: "Create React App",
+              value: "cra",
+            },
+          ],
+          filter,
+        },
+        {
+          type: "confirm",
+          name: "use_ts",
+          message: "Do you want to use TypeScript?:",
+        },
+      ]);
 
       try {
         fs.mkdirSync(firstSet.package_name);
@@ -193,7 +188,6 @@ export const app = async () => {
           {
             name: "REST",
             value: "rest",
-            disabled: "Not yet supported",
           },
           {
             name: "gRPC",
@@ -212,8 +206,7 @@ export const app = async () => {
         if (transport === "graphql") {
           await install(firstSet.package_name, "node-graphql-ts");
         } else if (transport === "rest") {
-          // not yet supported
-          // await install(firstSet.package_name, "node-rest-ts");
+          await install(firstSet.package_name, "node-rest-ts");
         } else if (transport === "grpc") {
           // not yet supported
           // await install(firstSet.package_name, "node-grpc-ts");
