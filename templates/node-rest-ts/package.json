@@ -30,8 +30,8 @@
   },
   "devDependencies": {
     "@types/node": "^18.0.3",
-    "@typescript-eslint/eslint-plugin": "^5.36.2",
-    "@typescript-eslint/parser": "^5.36.2",
+    "@typescript-eslint/eslint-plugin": "^5.40.0",
+    "@typescript-eslint/parser": "^5.40.0",
     "bob-ts": "^4.1.1",
     "bob-watch": "^0.1.2",
     "concurrently": "^7.4.0",
