@@ -38,7 +38,7 @@
     "@typescript-eslint/eslint-plugin": "^5.40.0",
     "@typescript-eslint/parser": "^5.40.0",
     "bob-ts": "^4.1.1",
-    "esbuild": "^0.15.7",
+    "esbuild": "^0.15.12",
     "eslint": "^8.23.0",
     "eslint-config-prettier": "^8.5.0",
     "husky": "^8.0.1",
