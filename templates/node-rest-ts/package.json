@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@prisma/client": "^4.5.0",
-    "dotenv": "^16.0.2",
+    "dotenv": "^16.0.3",
     "fastify": "^4.8.1",
     "prisma": "^4.5.0",
     "require-env-variable": "^4.0.1"
