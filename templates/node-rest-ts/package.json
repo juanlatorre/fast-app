@@ -29,7 +29,7 @@
     "require-env-variable": "^4.0.1"
   },
   "devDependencies": {
-    "@types/node": "^18.11.7",
+    "@types/node": "^18.11.9",
     "@typescript-eslint/eslint-plugin": "^5.42.0",
     "@typescript-eslint/parser": "^5.42.0",
     "bob-ts": "^4.1.1",
