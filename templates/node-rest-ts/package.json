@@ -22,10 +22,10 @@
     "tsc": "tsc"
   },
   "dependencies": {
-    "@prisma/client": "^4.5.0",
+    "@prisma/client": "^4.7.1",
     "dotenv": "^16.0.3",
     "fastify": "^4.9.2",
-    "prisma": "^4.5.0",
+    "prisma": "^4.7.1",
     "require-env-variable": "^4.0.1"
   },
   "devDependencies": {
