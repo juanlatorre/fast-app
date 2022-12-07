@@ -39,7 +39,7 @@
     "@typescript-eslint/parser": "^5.45.1",
     "bob-ts": "^4.1.1",
     "esbuild": "^0.15.18",
-    "eslint": "^8.27.0",
+    "eslint": "^8.29.0",
     "eslint-config-prettier": "^8.5.0",
     "husky": "^8.0.2",
     "prettier": "^2.7.1",

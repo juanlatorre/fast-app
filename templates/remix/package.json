@@ -21,7 +21,7 @@
   "devDependencies": {
     "@remix-run/dev": "^1.8.1",
     "@remix-run/eslint-config": "^1.8.1",
-    "eslint": "^8.27.0"
+    "eslint": "^8.29.0"
   },
   "engines": {
     "node": ">=14"
