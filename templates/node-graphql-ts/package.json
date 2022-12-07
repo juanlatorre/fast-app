@@ -28,7 +28,7 @@
     "@graphql-yoga/node": "^2.13.13",
     "@prisma/client": "^4.7.1",
     "dotenv": "^16.0.3",
-    "fastify": "^4.9.2",
+    "fastify": "^4.10.2",
     "graphql": "^16.6.0",
     "graphql-scalars": "^1.20.1",
     "graphql-voyager-fastify-plugin": "^0.1.3",
