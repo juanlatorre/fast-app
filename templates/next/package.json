@@ -9,14 +9,14 @@
     "start": "next start"
   },
   "dependencies": {
-    "husky": "^8.0.1",
-    "next": "12.3.1",
+    "husky": "^8.0.2",
+    "next": "13.0.6",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "eslint": "^8.23.0",
+    "eslint": "^8.29.0",
     "eslint-config-prettier": "^8.5.0",
-    "prettier": "^2.7.1"
+    "prettier": "^2.8.0"
   }
 }

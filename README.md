@@ -30,7 +30,7 @@
 ├── Backend
 │   ├── Node.js
 │   │   ├── GraphQL
-│   │   ├── REST (Coming soon)
+│   │   ├── REST
 │   │   ├── gRPC (Coming soon)
 │   └── Golang (Not yet supported)
 │   │   ├── GraphQL
