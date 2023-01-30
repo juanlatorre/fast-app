@@ -36,10 +36,10 @@
     "require-env-variable": "^4.0.1"
   },
   "devDependencies": {
-    "@graphql-codegen/core": "^2.6.6",
+    "@graphql-codegen/core": "^2.6.8",
     "@graphql-codegen/plugin-helpers": "^2.7.2",
-    "@graphql-codegen/typescript": "^2.8.3",
-    "@graphql-codegen/typescript-resolvers": "^2.7.8",
+    "@graphql-codegen/typescript": "^2.8.8",
+    "@graphql-codegen/typescript-resolvers": "^2.7.13",
     "@types/node": "^18.11.11",
     "@typescript-eslint/eslint-plugin": "^5.45.1",
     "@typescript-eslint/parser": "^5.45.1",
